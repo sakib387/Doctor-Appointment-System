@@ -2,7 +2,8 @@ const express =require('express')
 const colors=require('colors')
 const morgan=require('morgan')
 const dotenv=require('dotenv')
-
+const connectDB = require('./config/db')
+const user=require('./routes/userRoute')
 
 
 //rest object
@@ -10,14 +11,17 @@ const app=express()
 
 //dotenv config
 dotenv.config()
+
+//mongodb connect
+
+connectDB()
+
 //middlewares
 app.use(express.json())
 app.use(morgan('dev'))
 
 //routes
-app.get("/",(req,res)=>{
-    res.status(200).send('sakib i love you')
-})
+app.use('/api/user',user)
 
 // port
 const PORT=process.env.PORT||8000
