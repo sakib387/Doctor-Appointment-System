@@ -1,12 +1,22 @@
- 
+import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import './App.css';
+import HomePage from './pages/HomePage';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
   return (
    <>
-   <div className="bg-dark">
-    <h1 className="text-success">sakib</h1>
-   </div>
+    <BrowserRouter>
+      <Routes>
+
+        <Route path='/' element={<HomePage/>}></Route>
+        <Route path='/login' element={<Login/>}></Route>
+        <Route path='/register' element={<Register/>}></Route>
+
+
+      </Routes>
+    </BrowserRouter>
    </>
   );
 }
